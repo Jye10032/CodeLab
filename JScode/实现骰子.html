@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        .first-face {
+            display: flex;
+            /*水平方向*/
+            justify-content: center;
+            /*垂直方向*/
+            align-items: center;
+        }
+
+        .second-face {
+            display: flex;
+            /*在容器中均匀分布*/
+            justify-content: space-between;
+
+        }
+
+        .second-face .pip:nth-child(2) {
+            /*垂直靠下*/
+            align-self: flex-end;
+        }
+
+        .third-face {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .third-face .pip:nth-child(2) {
+            align-self: center;
+        }
+
+        .third-face .pip:nth-child(3) {
+            align-self: flex-end;
+        }
+
+
+        .four-face,
+        .fifth-face,
+        .six-face {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .four-face .col,
+        .fifth-face .col,
+        .six-face .col {
+            display: flex;
+            /*项目在垂直方向上排列*/
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .fifth-face .col:nth-child(2) {
+            align-self: center;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+
+        body {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            background-color: green;
+        }
+
+        [class$="face"] {
+            width: 104px;
+            height: 104px;
+            border-radius: 10px;
+            margin: 16px;
+            padding: 8px;
+
+            background-color: #e7e7e7;
+
+            box-shadow: inset 0 5px #fff,
+                inset 0 -5px #bbb,
+                inset 5px 0 #d7d7d7,
+                inset -5px 0 #d7d7d7;
+        }
+
+        .pip {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+
+            background-color: #333;
+
+            box-shadow: inset 0 3px #111, inset 0 -3px #555;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <div class="first-face">
+            <div class="pip"></div>
+        </div>
+        <div class="second-face">
+            <div class="pip"></div>
+            <div class="pip"></div>
+        </div>
+
+        <div class="third-face">
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+        </div>
+
+    </div>
+    <div>
+        <div class="four-face">
+            <div class="col">
+                <div class="pip"></div>
+                <div class="pip"></div>
+            </div>
+            <div class="col">
+                <div class="pip"></div>
+                <div class="pip"></div>
+            </div>
+        </div>
+
+        <div class="fifth-face">
+            <div class="col">
+                <div class="pip"></div>
+                <div class="pip"></div>
+            </div>
+            <div class="col">
+                <div class="pip"></div>
+            </div>
+            <div class="col">
+                <div class="pip"></div>
+                <div class="pip"></div>
+            </div>
+        </div>
+
+        <div class="six-face">
+            <div class="col">
+                <div class="pip"></div>
+                <div class="pip"></div>
+                <div class="pip"></div>
+            </div>
+            <div class="col">
+                <div class="pip"></div>
+                <div class="pip"></div>
+                <div class="pip"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
