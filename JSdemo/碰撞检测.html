@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .act1 {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 10px solid red;
+        left: 0;
+        top: 0;
+
+    }
+
+    .act2 {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 10px solid blue;
+        left: 100;
+        top: 1000;
+    }
+</style>
+
+</html>
+
+<body>
+    <div class="act1"></div>
+    <div class="act2"></div>
+    <script>
+        let dragElement = null;
+        let dragStartX = 0;
+        let dragStartY = 0;
+
+        // 为每个元素添加 mousedown 事件
+        document.querySelectorAll('.act1, .act2').forEach((elem) => {
+            elem.addEventListener('mousedown', (event) => {
+                dragElement = event.target;
+                dragStartX = event.clientX;
+                dragStartY = event.clientY;
+            });
+        });
+
+        // 添加 mousemove 事件
+        document.addEventListener('mousemove', (event) => {
+            if (dragElement === null) return;
+
+            // 计算鼠标的移动距离
+            const dx = event.clientX - dragStartX;
+            const dy = event.clientY - dragStartY;
+
+            // 更新元素的位置
+            const style = window.getComputedStyle(dragElement);
+            dragElement.style.left = parseInt(style.left) + dx + 'px';
+            dragElement.style.top = parseInt(style.top) + dy + 'px';
+
+            // 更新鼠标的位置
+            dragStartX = event.clientX;
+            dragStartY = event.clientY;
+        });
+
+        // 添加 mouseup 事件
+        document.addEventListener('mouseup', () => {
+            dragElement = null;
+        });
+        function isColliding(elem1, elem2) {
+            const rect1 = elem1.getBoundingClientRect();
+            const rect2 = elem2.getBoundingClientRect();
+
+            return !(rect1.right < rect2.left ||
+                rect1.left > rect2.right ||
+                rect1.bottom < rect2.top ||
+                rect1.top > rect2.bottom);
+        }
+        document.addEventListener('mousemove', (event) => {
+            // ...你的其他代码...
+
+            // 获取所有的元素
+            const elems = document.querySelectorAll('.act1, .act2');
+
+            // 检测碰撞
+            for (let i = 0; i < elems.length; i++) {
+                for (let j = i + 1; j < elems.length; j++) {
+                    if (isColliding(elems[i], elems[j])) {
+                        // 如果发生碰撞，改变元素的颜色
+                        elems[i].style.borderColor = 'green';
+                        elems[j].style.borderColor = 'green';
+                    } else {
+                        // 如果没有发生碰撞，恢复元素的颜色
+                        elems[i].style.borderColor = '';
+                        elems[j].style.borderColor = '';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
