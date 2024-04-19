@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<body>
+    <div style="color:red;">使用addEventListener</div>
+    <br>
+    <span>文本框的值：</span>
+    <br>
+    <input type="text" id="onchange">
+    <br>
+    <span>输出结果：</span>
+    <p id="on_change" style="border-style:solid;">原始值</p>
+
+    <div style="color:red">使用onchange,光标失效后再更新</div>
+    <br>
+    <span>文本框的值：</span>
+    <br>
+    <input type="text" id="t1" onchange="p1()">
+    <div>输出结果：</div>
+    <p id="pp" style="border-style:solid;">原始值</p>
+    <div style="color:red">使用oninput,立即更新</div>
+    <br>
+    <span>文本框的值：</span>
+    <br>
+    <input type="text" id="t2" oninput="p2()">
+    <div>输出结果：</div>
+    <p id="pp2" style="border-style:solid;">原始值</p>
+    <script>
+        const input = document.getElementById('onchange');
+        const p = document.getElementById('on_change');
+        input.addEventListener('input', function () {
+            p.textContent = input.value;
+        });
+
+        function p1() {
+            var lb_p = document.getElementById("pp");
+            var txt_t1 = document.getElementById("t1").value;
+            lb_p.innerHTML = txt_t1;
+        }
+
+        function p2() {
+            var lb_p = document.getElementById("pp2");
+            var txt_t2 = document.getElementById("t2").value;
+            lb_p.innerHTML = txt_t2;
+        }
+    </script>
+</body>
