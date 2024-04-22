@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .left {
+            width: 200px;
+            background-color: blue;
+        }
+
+        .center {
+            flex: 1;
+            width: 100%;
+            min-width: 10px;
+            background-color: yellow;
+        }
+
+        .right {
+            height: 300px;
+            width: 150px;
+            background: rgb(252, 78, 39);
+        }
+
+        .footer,
+        .header {
+            clear: both;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">header</div>
+    <div class="container">
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="right"></div>
+    </div>
+    <div class="footer">footer</div>
+
+</body>
